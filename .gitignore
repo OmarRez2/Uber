@@ -1,1 +1,24 @@
 .env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Power BI local state
+**/.pbi/localSettings.json
+**/.pbi/editorSettings.json
+**/.pbi/cache.abf
+
+# Generated data and import artifacts
+uber_analysis.db
+sqlserver_import_data/
+
+# Backups and temporary files
+*_backup_*
+*.bak
+*.tmp
+~$*
+Thumbs.db
+.DS_Store
