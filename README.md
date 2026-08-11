@@ -2,9 +2,9 @@
 
 End-to-end business intelligence project analyzing Uber trip demand, revenue, vehicle performance, time patterns, and location behavior using Power BI and SQL Server.
 
-<p align="center">
-  <img src="./Images/Uber%20Logo.png" alt="Uber logo" width="170">
-</p>
+## Dashboard preview
+
+![Uber Trips Analytics dashboard](./dashboard-preview.png)
 
 ## Project overview
 
