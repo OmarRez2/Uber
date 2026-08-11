@@ -1,0 +1,22 @@
+﻿Uber SQL Query Results
+Generated: 2026-07-30T18:07:35
+Database: E:\BI Projects\Uber\uber_analysis.db
+SQL file: E:\BI Projects\Uber\Uber_Insights_Queries.sql
+
+Query 01: Confirm the grain: one row = one trip | rows=1 | file=Query_01.csv
+Query 02: Core KPIs: keep both revenue definitions until the business confirms one | rows=1 | file=Query_02.csv
+Query 03: Quality checks required before efficiency analysis | rows=1 | file=Query_03.csv
+Query 04: Vehicle performance grid | rows=5 | file=Query_04.csv
+Query 05: Payment mix and suspicious Surge behavior | rows=4 | file=Query_05.csv
+Query 06: Passenger-count mix | rows=6 | file=Query_06.csv
+Query 07: Daily bookings and revenue | rows=30 | file=Query_07.csv
+Query 08: Correct weekday comparison: normalize for number of occurrences | rows=7 | file=Query_08.csv
+Query 09: Pickup-time analysis by hour | rows=24 | file=Query_09.csv
+Query 10: Pickup-time analysis by 10-minute bucket | rows=144 | file=Query_10.csv
+Query 11: Day vs Night (assumption: Day = 06:00–17:59) | rows=2 | file=Query_11.csv
+Query 12: Top pickup locations | rows=10 | file=Query_12.csv
+Query 13: Top drop-off locations: same dimension used in a second role | rows=10 | file=Query_13.csv
+Query 14: Most common routes | rows=10 | file=Query_14.csv
+Query 15: Farthest trips for outlier review | rows=10 | file=Query_15.csv
+Query 16: Most preferred vehicle at each pickup location | rows=234 | file=Query_16.csv
+Query 17: Clean efficiency metrics | rows=1 | file=Query_17.csv

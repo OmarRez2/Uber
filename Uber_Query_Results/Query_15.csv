@@ -1,0 +1,11 @@
+﻿trip_id,trip_distance,duration_minutes,speed_mph,fare_amount,surge_fee,pickup_location,dropoff_location
+103565,144.1,531.85,16.26,563.79,0.0,Lower East Side,Crown Heights North
+14781,125.5,161.13,46.73,328.5,74.51,Penn Station/Madison Sq West,Canarsie
+32353,62.4,235.05,15.93,204.0,41.9,Midtown East,Midtown East
+88894,61.37,247.85,14.86,212.5,45.61,Midtown East,Midtown East
+43342,51.2,56.1,54.76,131.0,100.0,JFK Airport,NA
+111181,47.09,52.1,54.23,121.5,2.75,Charleston/Tottenville,Glen Oaks
+58035,46.32,180.58,15.39,157.0,32.06,Midtown East,Sunset Park West
+93151,45.91,70.17,39.26,124.0,2.75,Charleston/Tottenville,Van Cortlandt Park
+78275,45.47,292.93,9.31,199.0,40.46,Midtown East,East Harlem North
+80339,44.61,76.87,34.82,117.5,2.75,Rossville/Woodrow,Woodlawn/Wakefield

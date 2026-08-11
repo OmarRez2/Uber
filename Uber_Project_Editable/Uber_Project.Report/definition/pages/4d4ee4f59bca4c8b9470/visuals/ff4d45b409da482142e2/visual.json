@@ -1,0 +1,960 @@
+{
+    "$schema":  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+    "name":  "ff4d45b409da482142e2",
+    "position":  {
+                     "x":  834.60591133004925,
+                     "y":  288.17733990147781,
+                     "z":  31000,
+                     "height":  569.70443349753691,
+                     "width":  524.26108374384239,
+                     "tabOrder":  31000
+                 },
+    "visual":  {
+                   "visualType":  "pivotTable",
+                   "query":  {
+                                 "queryState":  {
+                                                    "Columns":  {
+                                                                    "projections":  [
+                                                                                        {
+                                                                                            "field":  {
+                                                                                                          "Column":  {
+                                                                                                                         "Expression":  {
+                                                                                                                                            "SourceRef":  {
+                                                                                                                                                              "Entity":  "Date"
+                                                                                                                                                          }
+                                                                                                                                        },
+                                                                                                                         "Property":  "Day Name"
+                                                                                                                     }
+                                                                                                      },
+                                                                                            "queryRef":  "Date.Day Name",
+                                                                                            "nativeQueryRef":  "Day Name",
+                                                                                            "active":  true
+                                                                                        }
+                                                                                    ]
+                                                                },
+                                                    "Rows":  {
+                                                                 "projections":  [
+                                                                                     {
+                                                                                         "field":  {
+                                                                                                       "Column":  {
+                                                                                                                      "Expression":  {
+                                                                                                                                         "SourceRef":  {
+                                                                                                                                                           "Entity":  "Trip Details"
+                                                                                                                                                       }
+                                                                                                                                     },
+                                                                                                                      "Property":  "Pickup Hour"
+                                                                                                                  }
+                                                                                                   },
+                                                                                         "queryRef":  "Trip Details.Pickup Hour",
+                                                                                         "nativeQueryRef":  "Hour",
+                                                                                         "active":  true,
+                                                                                         "displayName":  "Hour"
+                                                                                     }
+                                                                                 ]
+                                                             },
+                                                    "Values":  {
+                                                                   "projections":  [
+                                                                                       {
+                                                                                           "field":  {
+                                                                                                         "Measure":  {
+                                                                                                                         "Expression":  {
+                                                                                                                                            "SourceRef":  {
+                                                                                                                                                              "Entity":  "Trip Details"
+                                                                                                                                                          }
+                                                                                                                                        },
+                                                                                                                         "Property":  "Total Bookings"
+                                                                                                                     }
+                                                                                                     },
+                                                                                           "queryRef":  "Trip Details.Total Bookings",
+                                                                                           "nativeQueryRef":  "Total Bookings",
+                                                                                           "displayName":  "Total Bookings"
+                                                                                       }
+                                                                                   ],
+                                                                   "fieldParameters":  [
+                                                                                           {
+                                                                                               "parameterExpr":  {
+                                                                                                                     "Column":  {
+                                                                                                                                    "Expression":  {
+                                                                                                                                                       "SourceRef":  {
+                                                                                                                                                                         "Entity":  "Dynamic Measures"
+                                                                                                                                                                     }
+                                                                                                                                                   },
+                                                                                                                                    "Property":  "Dynamic Measures"
+                                                                                                                                }
+                                                                                                                 },
+                                                                                               "index":  0,
+                                                                                               "length":  1
+                                                                                           }
+                                                                                       ]
+                                                               }
+                                                }
+                             },
+                   "objects":  {
+                                   "subTotals":  [
+                                                     {
+                                                         "properties":  {
+                                                                            "columnSubtotals":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "false"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                            "rowSubtotals":  {
+                                                                                                 "expr":  {
+                                                                                                              "Literal":  {
+                                                                                                                              "Value":  "false"
+                                                                                                                          }
+                                                                                                          }
+                                                                                             }
+                                                                        }
+                                                     }
+                                                 ],
+                                   "values":  [
+                                                  {
+                                                      "properties":  {
+                                                                         "fontSize":  {
+                                                                                          "expr":  {
+                                                                                                       "Literal":  {
+                                                                                                                       "Value":  "11D"
+                                                                                                                   }
+                                                                                                   }
+                                                                                      },
+                                                                         "fontFamily":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "\u0027\u0027\u0027Segoe UI\u0027\u0027, wf_segoe-ui_normal, helvetica, arial, sans-serif\u0027"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        },
+                                                                         "backColorSecondary":  {
+                                                                                                    "solid":  {
+                                                                                                                  "color":  {
+                                                                                                                                "expr":  {
+                                                                                                                                             "ThemeDataColor":  {
+                                                                                                                                                                    "ColorId":  0,
+                                                                                                                                                                    "Percent":  0
+                                                                                                                                                                }
+                                                                                                                                         }
+                                                                                                                            }
+                                                                                                              }
+                                                                                                }
+                                                                     }
+                                                  },
+                                                  {
+                                                      "properties":  {
+                                                                         "backColor":  {
+                                                                                           "solid":  {
+                                                                                                         "color":  {
+                                                                                                                       "expr":  {
+                                                                                                                                    "FillRule":  {
+                                                                                                                                                     "Input":  {
+                                                                                                                                                                   "Measure":  {
+                                                                                                                                                                                   "Expression":  {
+                                                                                                                                                                                                      "SourceRef":  {
+                                                                                                                                                                                                                        "Entity":  "Trip Details"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                  },
+                                                                                                                                                                                   "Property":  "Total Bookings"
+                                                                                                                                                                               }
+                                                                                                                                                               },
+                                                                                                                                                     "FillRule":  {
+                                                                                                                                                                      "linearGradient3":  {
+                                                                                                                                                                                              "min":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#e6e6e6\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "mid":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#808080\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "max":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#333333\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "nullColoringStrategy":  {
+                                                                                                                                                                                                                           "strategy":  {
+                                                                                                                                                                                                                                            "Literal":  {
+                                                                                                                                                                                                                                                            "Value":  "\u0027asZero\u0027"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                          }
+                                                                                                                                                                  }
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                                   }
+                                                                                                     }
+                                                                                       },
+                                                                         "fontColor":  {
+                                                                                           "solid":  {
+                                                                                                         "color":  {
+                                                                                                                       "expr":  {
+                                                                                                                                    "FillRule":  {
+                                                                                                                                                     "Input":  {
+                                                                                                                                                                   "Measure":  {
+                                                                                                                                                                                   "Expression":  {
+                                                                                                                                                                                                      "SourceRef":  {
+                                                                                                                                                                                                                        "Entity":  "Trip Details"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                  },
+                                                                                                                                                                                   "Property":  "Total Bookings"
+                                                                                                                                                                               }
+                                                                                                                                                               },
+                                                                                                                                                     "FillRule":  {
+                                                                                                                                                                      "linearGradient3":  {
+                                                                                                                                                                                              "min":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#e6e6e6\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "mid":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#808080\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "max":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#333333\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "nullColoringStrategy":  {
+                                                                                                                                                                                                                           "strategy":  {
+                                                                                                                                                                                                                                            "Literal":  {
+                                                                                                                                                                                                                                                            "Value":  "\u0027asZero\u0027"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                          }
+                                                                                                                                                                  }
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                                   }
+                                                                                                     }
+                                                                                       }
+                                                                     },
+                                                      "selector":  {
+                                                                       "data":  [
+                                                                                    {
+                                                                                        "dataViewWildcard":  {
+                                                                                                                 "matchingOption":  1
+                                                                                                             }
+                                                                                    }
+                                                                                ],
+                                                                       "metadata":  "Trip Details.Total Bookings"
+                                                                   }
+                                                  },
+                                                  {
+                                                      "properties":  {
+                                                                         "backColor":  {
+                                                                                           "solid":  {
+                                                                                                         "color":  {
+                                                                                                                       "expr":  {
+                                                                                                                                    "FillRule":  {
+                                                                                                                                                     "Input":  {
+                                                                                                                                                                   "Measure":  {
+                                                                                                                                                                                   "Expression":  {
+                                                                                                                                                                                                      "SourceRef":  {
+                                                                                                                                                                                                                        "Entity":  "Trip Details"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                  },
+                                                                                                                                                                                   "Property":  "Total Booking Value"
+                                                                                                                                                                               }
+                                                                                                                                                               },
+                                                                                                                                                     "FillRule":  {
+                                                                                                                                                                      "linearGradient3":  {
+                                                                                                                                                                                              "min":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#c499ca\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "mid":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#a666b0\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "max":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#893395\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "nullColoringStrategy":  {
+                                                                                                                                                                                                                           "strategy":  {
+                                                                                                                                                                                                                                            "Literal":  {
+                                                                                                                                                                                                                                                            "Value":  "\u0027asZero\u0027"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                          }
+                                                                                                                                                                  }
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                                   }
+                                                                                                     }
+                                                                                       },
+                                                                         "fontColor":  {
+                                                                                           "solid":  {
+                                                                                                         "color":  {
+                                                                                                                       "expr":  {
+                                                                                                                                    "FillRule":  {
+                                                                                                                                                     "Input":  {
+                                                                                                                                                                   "Measure":  {
+                                                                                                                                                                                   "Expression":  {
+                                                                                                                                                                                                      "SourceRef":  {
+                                                                                                                                                                                                                        "Entity":  "Trip Details"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                  },
+                                                                                                                                                                                   "Property":  "Total Booking Value"
+                                                                                                                                                                               }
+                                                                                                                                                               },
+                                                                                                                                                     "FillRule":  {
+                                                                                                                                                                      "linearGradient3":  {
+                                                                                                                                                                                              "min":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#c499ca\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "mid":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#a666b0\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "max":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#893395\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "nullColoringStrategy":  {
+                                                                                                                                                                                                                           "strategy":  {
+                                                                                                                                                                                                                                            "Literal":  {
+                                                                                                                                                                                                                                                            "Value":  "\u0027asZero\u0027"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                          }
+                                                                                                                                                                  }
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                                   }
+                                                                                                     }
+                                                                                       }
+                                                                     },
+                                                      "selector":  {
+                                                                       "data":  [
+                                                                                    {
+                                                                                        "dataViewWildcard":  {
+                                                                                                                 "matchingOption":  1
+                                                                                                             }
+                                                                                    }
+                                                                                ],
+                                                                       "metadata":  "Trip Details.Total Booking Value"
+                                                                   }
+                                                  },
+                                                  {
+                                                      "properties":  {
+                                                                         "backColor":  {
+                                                                                           "solid":  {
+                                                                                                         "color":  {
+                                                                                                                       "expr":  {
+                                                                                                                                    "FillRule":  {
+                                                                                                                                                     "Input":  {
+                                                                                                                                                                   "Measure":  {
+                                                                                                                                                                                   "Expression":  {
+                                                                                                                                                                                                      "SourceRef":  {
+                                                                                                                                                                                                                        "Entity":  "Trip Details"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                  },
+                                                                                                                                                                                   "Property":  "Total Trip Distance"
+                                                                                                                                                                               }
+                                                                                                                                                               },
+                                                                                                                                                     "FillRule":  {
+                                                                                                                                                                      "linearGradient3":  {
+                                                                                                                                                                                              "min":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#a0a7d8\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "mid":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#717bc5\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "max":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#0e1a77\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "nullColoringStrategy":  {
+                                                                                                                                                                                                                           "strategy":  {
+                                                                                                                                                                                                                                            "Literal":  {
+                                                                                                                                                                                                                                                            "Value":  "\u0027asZero\u0027"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                          }
+                                                                                                                                                                  }
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                                   }
+                                                                                                     }
+                                                                                       },
+                                                                         "fontColor":  {
+                                                                                           "solid":  {
+                                                                                                         "color":  {
+                                                                                                                       "expr":  {
+                                                                                                                                    "FillRule":  {
+                                                                                                                                                     "Input":  {
+                                                                                                                                                                   "Measure":  {
+                                                                                                                                                                                   "Expression":  {
+                                                                                                                                                                                                      "SourceRef":  {
+                                                                                                                                                                                                                        "Entity":  "Trip Details"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                  },
+                                                                                                                                                                                   "Property":  "Total Trip Distance"
+                                                                                                                                                                               }
+                                                                                                                                                               },
+                                                                                                                                                     "FillRule":  {
+                                                                                                                                                                      "linearGradient3":  {
+                                                                                                                                                                                              "min":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#a0a7d8\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "mid":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#717bc5\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "max":  {
+                                                                                                                                                                                                          "color":  {
+                                                                                                                                                                                                                        "Literal":  {
+                                                                                                                                                                                                                                        "Value":  "\u0027#0e1a77\u0027"
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                      },
+                                                                                                                                                                                              "nullColoringStrategy":  {
+                                                                                                                                                                                                                           "strategy":  {
+                                                                                                                                                                                                                                            "Literal":  {
+                                                                                                                                                                                                                                                            "Value":  "\u0027asZero\u0027"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                          }
+                                                                                                                                                                  }
+                                                                                                                                                 }
+                                                                                                                                }
+                                                                                                                   }
+                                                                                                     }
+                                                                                       }
+                                                                     },
+                                                      "selector":  {
+                                                                       "data":  [
+                                                                                    {
+                                                                                        "dataViewWildcard":  {
+                                                                                                                 "matchingOption":  1
+                                                                                                             }
+                                                                                    }
+                                                                                ],
+                                                                       "metadata":  "Trip Details.Total Trip Distance"
+                                                                   }
+                                                  }
+                                              ],
+                                   "columnHeaders":  [
+                                                         {
+                                                             "properties":  {
+                                                                                "fontFamily":  {
+                                                                                                   "expr":  {
+                                                                                                                "Literal":  {
+                                                                                                                                "Value":  "\u0027\u0027\u0027Segoe UI Semibold\u0027\u0027, wf_segoe-ui_semibold, helvetica, arial, sans-serif\u0027"
+                                                                                                                            }
+                                                                                                            }
+                                                                                               },
+                                                                                "alignment":  {
+                                                                                                  "expr":  {
+                                                                                                               "Literal":  {
+                                                                                                                               "Value":  "\u0027Center\u0027"
+                                                                                                                           }
+                                                                                                           }
+                                                                                              }
+                                                                            }
+                                                         }
+                                                     ],
+                                   "rowHeaders":  [
+                                                      {
+                                                          "properties":  {
+                                                                             "alignment":  {
+                                                                                               "expr":  {
+                                                                                                            "Literal":  {
+                                                                                                                            "Value":  "\u0027Center\u0027"
+                                                                                                                        }
+                                                                                                        }
+                                                                                           },
+                                                                             "fontFamily":  {
+                                                                                                "expr":  {
+                                                                                                             "Literal":  {
+                                                                                                                             "Value":  "\u0027\u0027\u0027Segoe UI Semibold\u0027\u0027, wf_segoe-ui_semibold, helvetica, arial, sans-serif\u0027"
+                                                                                                                         }
+                                                                                                         }
+                                                                                            }
+                                                                         }
+                                                      }
+                                                  ],
+                                   "columnFormatting":  [
+                                                            {
+                                                                "properties":  {
+                                                                                   "labelPrecision":  {
+                                                                                                          "expr":  {
+                                                                                                                       "Literal":  {
+                                                                                                                                       "Value":  "0L"
+                                                                                                                                   }
+                                                                                                                   }
+                                                                                                      }
+                                                                               },
+                                                                "selector":  {
+                                                                                 "metadata":  "Trip Details.Total Bookings"
+                                                                             }
+                                                            },
+                                                            {
+                                                                "properties":  {
+                                                                                   "labelPrecision":  {
+                                                                                                          "expr":  {
+                                                                                                                       "Literal":  {
+                                                                                                                                       "Value":  "0L"
+                                                                                                                                   }
+                                                                                                                   }
+                                                                                                      },
+                                                                                   "labelDisplayUnits":  {
+                                                                                                             "expr":  {
+                                                                                                                          "Literal":  {
+                                                                                                                                          "Value":  "1000D"
+                                                                                                                                      }
+                                                                                                                      }
+                                                                                                         }
+                                                                               },
+                                                                "selector":  {
+                                                                                 "metadata":  "Trip Details.Total Booking Value"
+                                                                             }
+                                                            },
+                                                            {
+                                                                "properties":  {
+                                                                                   "labelDisplayUnits":  {
+                                                                                                             "expr":  {
+                                                                                                                          "Literal":  {
+                                                                                                                                          "Value":  "1000D"
+                                                                                                                                      }
+                                                                                                                      }
+                                                                                                         },
+                                                                                   "labelPrecision":  {
+                                                                                                          "expr":  {
+                                                                                                                       "Literal":  {
+                                                                                                                                       "Value":  "0L"
+                                                                                                                                   }
+                                                                                                                   }
+                                                                                                      }
+                                                                               },
+                                                                "selector":  {
+                                                                                 "metadata":  "Trip Details.Total Trip Distance"
+                                                                             }
+                                                            }
+                                                        ],
+                                   "columnWidth":  [
+                                                       {
+                                                           "properties":  {
+                                                                              "value":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "64.2213271051725D"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                                          },
+                                                           "selector":  {
+                                                                            "metadata":  "Trip Details.Pickup Hour"
+                                                                        }
+                                                       },
+                                                       {
+                                                           "properties":  {
+                                                                              "value":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "63.31317277185234D"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                                          },
+                                                           "selector":  {
+                                                                            "data":  [
+                                                                                         {
+                                                                                             "scopeId":  {
+                                                                                                             "Comparison":  {
+                                                                                                                                "ComparisonKind":  0,
+                                                                                                                                "Left":  {
+                                                                                                                                             "Column":  {
+                                                                                                                                                            "Expression":  {
+                                                                                                                                                                               "SourceRef":  {
+                                                                                                                                                                                                 "Entity":  "Date"
+                                                                                                                                                                                             }
+                                                                                                                                                                           },
+                                                                                                                                                            "Property":  "Day Name"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                                "Right":  {
+                                                                                                                                              "Literal":  {
+                                                                                                                                                              "Value":  "\u0027Mon\u0027"
+                                                                                                                                                          }
+                                                                                                                                          }
+                                                                                                                            }
+                                                                                                         }
+                                                                                         }
+                                                                                     ]
+                                                                        }
+                                                       },
+                                                       {
+                                                           "properties":  {
+                                                                              "value":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "62.05676165725456D"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                                          },
+                                                           "selector":  {
+                                                                            "data":  [
+                                                                                         {
+                                                                                             "scopeId":  {
+                                                                                                             "Comparison":  {
+                                                                                                                                "ComparisonKind":  0,
+                                                                                                                                "Left":  {
+                                                                                                                                             "Column":  {
+                                                                                                                                                            "Expression":  {
+                                                                                                                                                                               "SourceRef":  {
+                                                                                                                                                                                                 "Entity":  "Date"
+                                                                                                                                                                                             }
+                                                                                                                                                                           },
+                                                                                                                                                            "Property":  "Day Name"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                                "Right":  {
+                                                                                                                                              "Literal":  {
+                                                                                                                                                              "Value":  "\u0027Tue\u0027"
+                                                                                                                                                          }
+                                                                                                                                          }
+                                                                                                                            }
+                                                                                                         }
+                                                                                         }
+                                                                                     ]
+                                                                        }
+                                                       },
+                                                       {
+                                                           "properties":  {
+                                                                              "value":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "64.44857665588644D"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                                          },
+                                                           "selector":  {
+                                                                            "data":  [
+                                                                                         {
+                                                                                             "scopeId":  {
+                                                                                                             "Comparison":  {
+                                                                                                                                "ComparisonKind":  0,
+                                                                                                                                "Left":  {
+                                                                                                                                             "Column":  {
+                                                                                                                                                            "Expression":  {
+                                                                                                                                                                               "SourceRef":  {
+                                                                                                                                                                                                 "Entity":  "Date"
+                                                                                                                                                                                             }
+                                                                                                                                                                           },
+                                                                                                                                                            "Property":  "Day Name"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                                "Right":  {
+                                                                                                                                              "Literal":  {
+                                                                                                                                                              "Value":  "\u0027Wed\u0027"
+                                                                                                                                                          }
+                                                                                                                                          }
+                                                                                                                            }
+                                                                                                         }
+                                                                                         }
+                                                                                     ]
+                                                                        }
+                                                       },
+                                                       {
+                                                           "properties":  {
+                                                                              "value":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "65.1323518057215D"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                                          },
+                                                           "selector":  {
+                                                                            "data":  [
+                                                                                         {
+                                                                                             "scopeId":  {
+                                                                                                             "Comparison":  {
+                                                                                                                                "ComparisonKind":  0,
+                                                                                                                                "Left":  {
+                                                                                                                                             "Column":  {
+                                                                                                                                                            "Expression":  {
+                                                                                                                                                                               "SourceRef":  {
+                                                                                                                                                                                                 "Entity":  "Date"
+                                                                                                                                                                                             }
+                                                                                                                                                                           },
+                                                                                                                                                            "Property":  "Day Name"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                                "Right":  {
+                                                                                                                                              "Literal":  {
+                                                                                                                                                              "Value":  "\u0027Thu\u0027"
+                                                                                                                                                          }
+                                                                                                                                          }
+                                                                                                                            }
+                                                                                                         }
+                                                                                         }
+                                                                                     ]
+                                                                        }
+                                                       },
+                                                       {
+                                                           "properties":  {
+                                                                              "value":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "62.537445624039194D"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                                          },
+                                                           "selector":  {
+                                                                            "data":  [
+                                                                                         {
+                                                                                             "scopeId":  {
+                                                                                                             "Comparison":  {
+                                                                                                                                "ComparisonKind":  0,
+                                                                                                                                "Left":  {
+                                                                                                                                             "Column":  {
+                                                                                                                                                            "Expression":  {
+                                                                                                                                                                               "SourceRef":  {
+                                                                                                                                                                                                 "Entity":  "Date"
+                                                                                                                                                                                             }
+                                                                                                                                                                           },
+                                                                                                                                                            "Property":  "Day Name"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                                "Right":  {
+                                                                                                                                              "Literal":  {
+                                                                                                                                                              "Value":  "\u0027Fri\u0027"
+                                                                                                                                                          }
+                                                                                                                                          }
+                                                                                                                            }
+                                                                                                         }
+                                                                                         }
+                                                                                     ]
+                                                                        }
+                                                       },
+                                                       {
+                                                           "properties":  {
+                                                                              "value":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "67.73538648310638D"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                                          },
+                                                           "selector":  {
+                                                                            "data":  [
+                                                                                         {
+                                                                                             "scopeId":  {
+                                                                                                             "Comparison":  {
+                                                                                                                                "ComparisonKind":  0,
+                                                                                                                                "Left":  {
+                                                                                                                                             "Column":  {
+                                                                                                                                                            "Expression":  {
+                                                                                                                                                                               "SourceRef":  {
+                                                                                                                                                                                                 "Entity":  "Date"
+                                                                                                                                                                                             }
+                                                                                                                                                                           },
+                                                                                                                                                            "Property":  "Day Name"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                                "Right":  {
+                                                                                                                                              "Literal":  {
+                                                                                                                                                              "Value":  "\u0027Sat\u0027"
+                                                                                                                                                          }
+                                                                                                                                          }
+                                                                                                                            }
+                                                                                                         }
+                                                                                         }
+                                                                                     ]
+                                                                        }
+                                                       },
+                                                       {
+                                                           "properties":  {
+                                                                              "value":  {
+                                                                                            "expr":  {
+                                                                                                         "Literal":  {
+                                                                                                                         "Value":  "62.75201694206841D"
+                                                                                                                     }
+                                                                                                     }
+                                                                                        }
+                                                                          },
+                                                           "selector":  {
+                                                                            "data":  [
+                                                                                         {
+                                                                                             "scopeId":  {
+                                                                                                             "Comparison":  {
+                                                                                                                                "ComparisonKind":  0,
+                                                                                                                                "Left":  {
+                                                                                                                                             "Column":  {
+                                                                                                                                                            "Expression":  {
+                                                                                                                                                                               "SourceRef":  {
+                                                                                                                                                                                                 "Entity":  "Date"
+                                                                                                                                                                                             }
+                                                                                                                                                                           },
+                                                                                                                                                            "Property":  "Day Name"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                                "Right":  {
+                                                                                                                                              "Literal":  {
+                                                                                                                                                              "Value":  "\u0027Sun\u0027"
+                                                                                                                                                          }
+                                                                                                                                          }
+                                                                                                                            }
+                                                                                                         }
+                                                                                         }
+                                                                                     ]
+                                                                        }
+                                                       }
+                                                   ],
+                                   "grid":  [
+                                                {
+                                                    "properties":  {
+                                                                       "outlineColor":  {
+                                                                                            "solid":  {
+                                                                                                          "color":  {
+                                                                                                                        "expr":  {
+                                                                                                                                     "ThemeDataColor":  {
+                                                                                                                                                            "ColorId":  0,
+                                                                                                                                                            "Percent":  -0.1
+                                                                                                                                                        }
+                                                                                                                                 }
+                                                                                                                    }
+                                                                                                      }
+                                                                                        }
+                                                                   }
+                                                }
+                                            ]
+                               },
+                   "visualContainerObjects":  {
+                                                  "title":  [
+                                                                {
+                                                                    "properties":  {
+                                                                                       "show":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                "Value":  "true"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "text":  {
+                                                                                                    "expr":  {
+                                                                                                                 "Literal":  {
+                                                                                                                                 "Value":  "\u0027Hourly Booking Patterns by Day of Week\u0027"
+                                                                                                                             }
+                                                                                                             }
+                                                                                                },
+                                                                                       "fontSize":  {
+                                                                                                        "expr":  {
+                                                                                                                     "Literal":  {
+                                                                                                                                     "Value":  "11D"
+                                                                                                                                 }
+                                                                                                                 }
+                                                                                                    },
+                                                                                       "fontFamily":  {
+                                                                                                          "expr":  {
+                                                                                                                       "Literal":  {
+                                                                                                                                       "Value":  "\u0027\u0027\u0027Segoe UI Semibold\u0027\u0027, wf_segoe-ui_semibold, helvetica, arial, sans-serif\u0027"
+                                                                                                                                   }
+                                                                                                                   }
+                                                                                                      },
+                                                                                       "fontColor":  {
+                                                                                                         "solid":  {
+                                                                                                                       "color":  {
+                                                                                                                                     "expr":  {
+                                                                                                                                                  "Literal":  {
+                                                                                                                                                                  "Value":  "\u0027#15171A\u0027"
+                                                                                                                                                              }
+                                                                                                                                              }
+                                                                                                                                 }
+                                                                                                                   }
+                                                                                                     },
+                                                                                       "alignment":  {
+                                                                                                         "expr":  {
+                                                                                                                      "Literal":  {
+                                                                                                                                      "Value":  "\u0027left\u0027"
+                                                                                                                                  }
+                                                                                                                  }
+                                                                                                     }
+                                                                                   }
+                                                                }
+                                                            ],
+                                                  "subTitle":  [
+                                                                   {
+                                                                       "properties":  {
+                                                                                          "show":  {
+                                                                                                       "expr":  {
+                                                                                                                    "Literal":  {
+                                                                                                                                    "Value":  "false"
+                                                                                                                                }
+                                                                                                                }
+                                                                                                   }
+                                                                                      }
+                                                                   }
+                                                               ]
+                                              },
+                   "drillFilterOtherVisuals":  true
+               }
+}

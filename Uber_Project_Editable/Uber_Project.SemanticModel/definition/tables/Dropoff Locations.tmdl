@@ -1,0 +1,35 @@
+/// Role-playing location dimension used for trip drop-off analysis.
+table 'Dropoff Locations'
+	lineageTag: 2711c48a-ae62-413a-bfa1-d9c8989d029d
+
+	/// Unique taxi-zone location key.
+	column LocationID
+		dataType: int64
+		formatString: 0
+		lineageTag: 27ebbce0-ad17-4fa9-94e4-09b1613b31f6
+		summarizeBy: none
+		sourceColumn: [LocationID]
+
+	/// Taxi-zone location name.
+	column Location
+		dataType: string
+		lineageTag: c4adae94-dc28-4cb8-bbbe-7c68702dd8fc
+		summarizeBy: none
+		sourceColumn: [Location]
+
+	/// City or borough grouping for the location.
+	column City
+		dataType: string
+		lineageTag: e6a4b347-47b9-4f34-ac63-b276b1d22991
+		summarizeBy: none
+		sourceColumn: [City]
+
+	partition 'Dropoff Locations' = calculated
+		source =
+				SELECTCOLUMNS(
+				    'Location Table',
+				    "LocationID", 'Location Table'[LocationID],
+				    "Location", 'Location Table'[Location],
+				    "City", 'Location Table'[City]
+				)
+

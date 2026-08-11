@@ -1,0 +1,235 @@
+﻿pu_location_id,location,vehicle,bookings
+236,Upper East Side North,UberX,1680
+186,Penn Station/Madison Sq West,UberX,1648
+237,Upper East Side South,UberX,1503
+140,Lenox Hill East,UberX,1501
+238,Upper West Side North,UberX,1394
+141,Lenox Hill West,UberX,1377
+48,Clinton East,UberX,1342
+142,Lincoln Square East,UberX,1336
+263,Yorkville West,UberX,1264
+137,Kips Bay,UberX,1229
+170,Murray Hill,UberX,1209
+239,Upper West Side South,UberX,1165
+75,East Harlem South,UberX,1098
+162,Midtown East,UberX,1063
+107,Gramercy,UberX,982
+229,Sutton Place/Turtle Bay North,UberX,888
+138,LaGuardia Airport,UberX,872
+161,Midtown Center,UberX,870
+68,East Chelsea,UberX,808
+234,Union Sq,UberX,768
+151,Manhattan Valley,UberX,743
+100,Garment District,UberX,725
+79,East Village,UberX,716
+262,Yorkville East,UberX,660
+163,Midtown North,UberX,658
+43,Central Park,UberX,652
+132,JFK Airport,UberX,632
+143,Lincoln Square West,UberX,615
+233,UN/Turtle Bay South,UberX,612
+90,Flatiron,UberX,595
+74,East Harlem North,UberX,574
+249,West Village,UberX,512
+164,Midtown South,UberX,493
+230,Times Sq/Theatre District,UberX,480
+41,Central Harlem,UberX,431
+113,Greenwich Village North,UberX,386
+166,Morningside Heights,UberX,381
+264,NV,UberX,346
+50,Clinton West,UberX,338
+42,Central Harlem North,UberX,301
+231,TriBeCa/Civic Center,UberX,287
+24,Bloomingdale,UberX,242
+114,Greenwich Village South,UberX,204
+246,West Chelsea/Hudson Yards,UberX,189
+148,Lower East Side,UberX,183
+87,Financial District North,UberX,169
+116,Hamilton Heights,UberX,152
+244,Washington Heights South,UberX,144
+144,Little Italy/NoLiTa,UberX,127
+224,Stuy Town/Peter Cooper Village,UberX,123
+70,East Elmhurst,UberX,118
+152,Manhattanville,UberX,111
+13,Battery Park City,UberX,110
+88,Financial District South,UberX,103
+211,SoHo,UberX,103
+125,Hudson Sq,UberX,93
+261,World Trade Center,UberX,92
+7,Astoria,UberX,86
+146,Long Island City/Queens Plaza,UberX,69
+226,Sunnyside,UberX,68
+158,Meatpacking/West Village West,UberX,61
+209,Seaport,UberX,57
+97,Fort Greene,UberX,42
+65,Downtown Brooklyn/MetroTech,UberX,40
+232,Two Bridges/Seward Park,UberX,34
+4,Alphabet City,UberX,31
+25,Boerum Hill,UberX,31
+45,Chinatown,UberX,27
+181,Park Slope,UberX,27
+145,Long Island City/Hunters Point,UberX,26
+168,Mott Haven/Port Morris,UberX,26
+95,Forest Hills,UberX,25
+129,Jackson Heights,UberX,23
+193,Queensbridge/Ravenswood,UberX,23
+159,Melrose South,UberX,20
+82,Elmhurst,UberX,19
+223,Steinway,UberX,19
+179,Old Astoria,UberX,17
+260,Woodside,UberX,17
+33,Brooklyn Heights,UberX,16
+69,East Concourse/Concourse Village,UberX,15
+247,West Concourse,UberX,15
+49,Clinton Hill,UberX,14
+61,Crown Heights North,UberX,14
+265,NA,UberX,14
+243,Washington Heights North,UberX,13
+256,Williamsburg (South Side),UberX,13
+127,Inwood,UberX,12
+80,East Williamsburg,UberX,11
+196,Rego Park,UberX,11
+17,Bedford,UberX,10
+189,Prospect Heights,UberX,10
+117,Hammels/Arverne,UberX,9
+64,Douglaston,UberX,8
+76,East New York,UberX,8
+89,Flatbush/Ditmas Park,UberX,8
+106,Gowanus,UberX,8
+112,Greenpoint,UberX,8
+126,Hunts Point,UberX,8
+188,Prospect-Lefferts Gardens,UberX,8
+228,Sunset Park West,UberX,8
+242,Van Nest/Morris Park,UberX,8
+255,Williamsburg (North Side),UberXL,8
+14,Bay Ridge,UberX,7
+35,Brownsville,UberX,7
+39,Canarsie,UberX,7
+40,Carroll Gardens,Uber Green,7
+52,Cobble Hill,UberX,7
+130,Jamaica,UberX,7
+169,Mount Hope,UberX,7
+182,Parkchester,UberX,7
+216,South Ozone Park,UberX,7
+37,Bushwick South,UberX,6
+38,Cambria Heights,UberX,6
+47,Claremont/Bathgate,UberXL,6
+66,DUMBO/Vinegar Hill,UberX,6
+83,Elmhurst/Maspeth,UberX,6
+119,Highbridge,UberX,6
+183,Pelham Bay,UberX,6
+217,South Williamsburg,Uber Comfort,6
+62,Crown Heights South,UberX,5
+78,East Tremont,UberX,5
+86,Far Rockaway,UberX,5
+91,Flatlands,UberX,5
+134,Kew Gardens,UberX,5
+147,Longwood,UberX,5
+167,Morrisania/Melrose,UberX,5
+174,Norwood,UberX,5
+213,Soundview/Castle Hill,UberX,5
+219,Springfield Gardens South,UberX,5
+235,University Heights/Morris Heights,UberX,5
+248,West Farms/Bronx River,Uber Black,5
+10,Baisley Park,UberX,4
+12,Battery Park,Uber Comfort,4
+20,Belmont,UberX,4
+51,Co-Op City,Uber Black,4
+136,Kingsbridge Heights,UberX,4
+149,Madison,UberX,4
+195,Red Hook,UberX,4
+197,Richmond Hill,Uber Black,4
+220,Spuyten Duyvil/Kingsbridge,Uber Comfort,4
+225,Stuyvesant Heights,UberX,4
+241,Van Cortlandt Village,UberX,4
+254,Williamsbridge/Olinville,UberX,4
+3,Allerton/Pelham Gardens,Uber Comfort,3
+18,Bedford Park,UberXL,3
+28,Briarwood/Jamaica Hills,Uber Comfort,3
+29,Brighton Beach,Uber Black,3
+44,Charleston/Tottenville,UberX,3
+55,Coney Island,UberX,3
+63,Cypress Hills,UberX,3
+71,East Flatbush/Farragut,UberX,3
+72,East Flatbush/Remsen Village,Uber Black,3
+77,East New York/Pennsylvania Avenue,UberXL,3
+85,Erasmus,UberXL,3
+94,Fordham South,Uber Comfort,3
+115,Grymes Hill/Clifton,UberX,3
+120,Highbridge Park,UberX,3
+121,Hillcrest/Pomonok,UberXL,3
+153,Marble Hill,UberX,3
+155,Marine Park/Mill Basin,UberX,3
+171,Murray Hill-Queens,UberX,3
+173,North Corona,UberX,3
+177,Ocean Hill,Uber Green,3
+191,Queens Village,Uber Black,3
+198,Ridgewood,UberX,3
+208,Schuylerville/Edgewater Park,Uber Comfort,3
+250,Westchester Village/Unionport,Uber Black,3
+22,Bensonhurst West,UberX,2
+23,Bloomfield/Emerson Hill,Uber Black,2
+36,Bushwick North,UberX,2
+46,City Island,Uber Comfort,2
+56,Corona,Uber Black,2
+60,Crotona Park East,UberX,2
+81,Eastchester,Uber Green,2
+92,Flushing,UberXL,2
+93,Flushing Meadows-Corona Park,UberXL,2
+98,Fresh Meadows,Uber Black,2
+123,Homecrest,UberX,2
+135,Kew Gardens Hills,UberX,2
+139,Laurelton,Uber Black,2
+156,Mariners Harbor,UberXL,2
+157,Maspeth,Uber Comfort,2
+185,Pelham Parkway,Uber Comfort,2
+190,Prospect Park,Uber Black,2
+203,Rosedale,Uber Green,2
+210,Sheepshead Bay,UberX,2
+212,Soundview/Bruckner,Uber Black,2
+227,Sunset Park East,UberX,2
+257,Windsor Terrace,UberXL,2
+1,Newark Airport,Uber Black,1
+2,Jamaica Bay,Uber Comfort,1
+8,Astoria Park,Uber Black,1
+11,Bath Beach,Uber Green,1
+16,Bayside,Uber Black,1
+19,Bellerose,UberXL,1
+26,Borough Park,UberXL,1
+27,Breezy Point/Fort Tilden/Riis Beach,UberX,1
+31,Bronx Park,UberX,1
+32,Bronxdale,UberX,1
+34,Brooklyn Navy Yard,Uber Comfort,1
+53,College Point,Uber Green,1
+54,Columbia Street,Uber Black,1
+67,Dyker Heights,Uber Black,1
+73,East Flushing,Uber Green,1
+96,Forest Park/Highland Park,Uber Comfort,1
+101,Glen Oaks,Uber Black,1
+108,Gravesend,Uber Green,1
+109,Great Kills,UberXL,1
+122,Hollis,Uber Comfort,1
+124,Howard Beach,Uber Comfort,1
+133,Kensington,Uber Black,1
+150,Manhattan Beach,UberXL,1
+160,Middle Village,Uber Comfort,1
+165,Midwood,Uber Comfort,1
+172,New Dorp/Midland Beach,Uber Comfort,1
+175,Oakland Gardens,UberX,1
+180,Ozone Park,Uber Black,1
+184,Pelham Bay Park,UberX,1
+192,Queensboro Hill,Uber Green,1
+194,Randalls Island,Uber Comfort,1
+201,Rockaway Park,Uber Green,1
+202,Roosevelt Island,Uber Black,1
+204,Rossville/Woodrow,UberX,1
+205,Saint Albans,UberX,1
+207,Saint Michaels Cemetery/Woodside,UberX,1
+215,South Jamaica,UberX,1
+218,Springfield Gardens North,Uber Black,1
+222,Starrett City,UberXL,1
+240,Van Cortlandt Park,Uber Comfort,1
+252,Whitestone,Uber Comfort,1
+253,Willets Point,Uber Black,1
+258,Woodhaven,UberXL,1
+259,Woodlawn/Wakefield,Uber Green,1

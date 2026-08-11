@@ -1,0 +1,132 @@
+/// Shared calendar dimension. Pickup date is active; drop-off date is available through an inactive relationship.
+table Date
+	lineageTag: 26b6ca7c-a9fc-4a50-8adc-8c81de09ec46
+
+	/// Calendar date.
+	column Date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: e40c3851-c0f2-4fd4-9dbb-83df392b7918
+		summarizeBy: none
+		sourceColumn: [Date]
+
+	/// Calendar year.
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 3843a54e-d561-45ad-b55e-ec2bfd8bbc2c
+		summarizeBy: none
+		sourceColumn: [Year]
+
+	/// Numeric month used for sorting.
+	column 'Month No'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5dc97584-cb18-4425-8df4-943441bd15e1
+		summarizeBy: none
+		sourceColumn: [Month No]
+
+	/// Abbreviated month name.
+	column Month
+		dataType: string
+		lineageTag: fd00fb8f-4d0e-4119-ba86-0d6a25767d87
+		summarizeBy: none
+		sourceColumn: [Month]
+		sortByColumn: 'Month No'
+
+	/// Month and year display label.
+	column 'Month Year'
+		dataType: string
+		lineageTag: 1bdf4387-18fe-4bc9-af9f-8edd6f953aff
+		summarizeBy: none
+		sourceColumn: [Month Year]
+		sortByColumn: 'Year Month Sort'
+
+	/// YYYYMM key used to sort Month Year.
+	column 'Year Month Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9a5abe8b-765e-4047-9f15-1bb4d611a81a
+		summarizeBy: none
+		sourceColumn: [Year Month Sort]
+
+	/// Numeric quarter used for sorting.
+	column 'Quarter No'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e13c5964-40a0-4015-9b36-3e2926a2619a
+		summarizeBy: none
+		sourceColumn: [Quarter No]
+
+	/// Calendar quarter label.
+	column Quarter
+		dataType: string
+		lineageTag: 57efc488-244c-406f-ab70-f99b660a7204
+		summarizeBy: none
+		sourceColumn: [Quarter]
+		sortByColumn: 'Quarter No'
+
+	/// Day of month.
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: b7ba7f38-c426-4ff8-9c48-e459e0d147b6
+		summarizeBy: none
+		sourceColumn: [Day]
+
+	/// Abbreviated weekday name.
+	column 'Day Name'
+		dataType: string
+		lineageTag: 55038e99-a0fc-4425-a3e0-445f8ca2e9a0
+		summarizeBy: none
+		sourceColumn: [Day Name]
+		sortByColumn: 'Day of Week No'
+
+	/// Monday-based weekday number used for sorting.
+	column 'Day of Week No'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 719f46ad-fef5-45da-b835-f748c6ed943b
+		summarizeBy: none
+		sourceColumn: [Day of Week No]
+
+	/// Monday starting the calendar week.
+	column 'Week Start'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 698a387b-34b0-4809-97f5-ff4785d6f867
+		summarizeBy: none
+		sourceColumn: [Week Start]
+
+	partition Date = calculated
+		source =
+				VAR _StartDate =
+				    MIN(
+				        MIN('Trip Details'[Pickup Date]),
+				        MIN('Trip Details'[Dropoff Date])
+				    )
+				VAR _EndDate =
+				    MAX(
+				        MAX('Trip Details'[Pickup Date]),
+				        MAX('Trip Details'[Dropoff Date])
+				    )
+				RETURN
+				    ADDCOLUMNS(
+				        CALENDAR(_StartDate, _EndDate),
+				        "Year", YEAR([Date]),
+				        "Month No", MONTH([Date]),
+				        "Month", FORMAT([Date], "MMM"),
+				        "Month Year", FORMAT([Date], "MMM yyyy"),
+				        "Year Month Sort", YEAR([Date]) * 100 + MONTH([Date]),
+				        "Quarter No", QUARTER([Date]),
+				        "Quarter", "Q" & FORMAT(QUARTER([Date]), "0"),
+				        "Day", DAY([Date]),
+				        "Day Name", FORMAT([Date], "ddd"),
+				        "Day of Week No", WEEKDAY([Date], 2),
+				        "Week Start", [Date] - WEEKDAY([Date], 2) + 1
+				    )
+

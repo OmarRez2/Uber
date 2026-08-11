@@ -1,0 +1,43 @@
+/// Hidden staging lookup used to build the pickup and drop-off role-playing dimensions.
+table 'Location Table'
+	isHidden
+	lineageTag: 75c03d22-3b06-40e4-b254-1b4db1b1d59c
+
+	column LocationID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7278a55d-83ad-4c2d-8e0f-de792075c79c
+		summarizeBy: count
+		sourceColumn: LocationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 878651f5-cb13-473c-9de4-7c85ca4ce76a
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 5a02386d-641c-4eac-ba99-5175ce2b4980
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Location Table' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("E:\BI Projects\Uber\Location Table.xlsx"), null, true),
+				    #"Location Table_Sheet" = Source{[Item="Location Table",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Location Table_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"LocationID", Int64.Type}, {"Location", type text}, {"City", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

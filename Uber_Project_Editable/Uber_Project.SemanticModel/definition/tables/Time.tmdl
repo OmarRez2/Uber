@@ -1,0 +1,74 @@
+/// Shared hour dimension. Pickup hour is active; drop-off hour is available through an inactive relationship.
+table Time
+	lineageTag: 1716970a-a8e6-4dfa-8b3c-ede3fdf8d7c5
+
+	/// Hour of day from 0 through 23.
+	column Hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 874eb747-9218-469e-91fb-56ae579e28d3
+		summarizeBy: none
+		sourceColumn: [Hour]
+
+	/// 12-hour display label for the hour.
+	column 'Hour Label'
+		dataType: string
+		lineageTag: 677b9f4b-9af4-4e58-9e94-6777490b5cc4
+		summarizeBy: none
+		sourceColumn: [Hour Label]
+		sortByColumn: Hour
+
+	/// Late Night, Morning, Afternoon, or Evening grouping.
+	column 'Time Period'
+		dataType: string
+		lineageTag: 6f6401fa-02e4-4a4f-9ae3-1cb060f48142
+		summarizeBy: none
+		sourceColumn: [Time Period]
+		sortByColumn: 'Time Period Sort'
+
+	/// Numeric order used to sort Time Period.
+	column 'Time Period Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 138a25fd-184a-4653-b833-3f9fd0066ee7
+		summarizeBy: none
+		sourceColumn: [Time Period Sort]
+
+	/// Day Trip for 06:00-17:59; Night Trip otherwise.
+	column 'Trip Shift'
+		dataType: string
+		lineageTag: 1411da3d-14cf-4cd8-af8f-6b55e9ed4800
+		summarizeBy: none
+		sourceColumn: [Trip Shift]
+
+	partition Time = calculated
+		source =
+				VAR _Hours =
+				    SELECTCOLUMNS(
+				        GENERATESERIES(0, 23, 1),
+				        "Hour", [Value]
+				    )
+				RETURN
+				    ADDCOLUMNS(
+				        _Hours,
+				        "Hour Label", FORMAT(TIME([Hour], 0, 0), "hh:mm AM/PM"),
+				        "Time Period",
+				            SWITCH(
+				                TRUE(),
+				                [Hour] < 6, "Late Night",
+				                [Hour] < 12, "Morning",
+				                [Hour] < 18, "Afternoon",
+				                "Evening"
+				            ),
+				        "Time Period Sort",
+				            SWITCH(
+				                TRUE(),
+				                [Hour] < 6, 1,
+				                [Hour] < 12, 2,
+				                [Hour] < 18, 3,
+				                4
+				            ),
+				        "Trip Shift", IF([Hour] >= 6 && [Hour] < 18, "Day Trip", "Night Trip")
+				    )
+

@@ -1,0 +1,35 @@
+/// Role-playing location dimension used for trip pickup analysis.
+table 'Pickup Locations'
+	lineageTag: 9176ba95-54c5-4191-b4d4-0859d637763c
+
+	/// Unique taxi-zone location key.
+	column LocationID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8da8ab2d-e2e9-4c63-8746-19134264b7c9
+		summarizeBy: none
+		sourceColumn: [LocationID]
+
+	/// Taxi-zone location name.
+	column Location
+		dataType: string
+		lineageTag: ab45b924-5b45-43ac-b72b-1b4b3627eb8d
+		summarizeBy: none
+		sourceColumn: [Location]
+
+	/// City or borough grouping for the location.
+	column City
+		dataType: string
+		lineageTag: 6e4a532b-4662-48ae-a03b-3e2f3634010e
+		summarizeBy: none
+		sourceColumn: [City]
+
+	partition 'Pickup Locations' = calculated
+		source =
+				SELECTCOLUMNS(
+				    'Location Table',
+				    "LocationID", 'Location Table'[LocationID],
+				    "Location", 'Location Table'[Location],
+				    "City", 'Location Table'[City]
+				)
+

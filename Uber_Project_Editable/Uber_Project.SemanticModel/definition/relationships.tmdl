@@ -1,0 +1,36 @@
+relationship 784573a5-8178-427b-b03c-6f93fa232956
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Trip Details'.'Pickup Time'
+	toColumn: LocalDateTable_1c32d238-1013-49ee-a7a4-fc864381ccd1.Date
+
+relationship 90634539-199f-40a4-84fa-d4d8ea9fba48
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Trip Details'.'Drop Off Time'
+	toColumn: LocalDateTable_ac07e5ff-fa5a-45d2-b6e3-e2c282ef0214.Date
+
+relationship R_Trips_PickupLocation
+	fromColumn: 'Trip Details'.PULocationID
+	toColumn: 'Pickup Locations'.LocationID
+
+relationship R_Trips_DropoffLocation
+	fromColumn: 'Trip Details'.DOLocationID
+	toColumn: 'Dropoff Locations'.LocationID
+
+relationship R_Trips_PickupDate
+	fromColumn: 'Trip Details'.'Pickup Date'
+	toColumn: Date.Date
+
+relationship R_Trips_DropoffDate
+	isActive: false
+	fromColumn: 'Trip Details'.'Dropoff Date'
+	toColumn: Date.Date
+
+relationship R_Trips_PickupHour
+	fromColumn: 'Trip Details'.'Pickup Hour'
+	toColumn: Time.Hour
+
+relationship R_Trips_DropoffHour
+	isActive: false
+	fromColumn: 'Trip Details'.'Dropoff Hour'
+	toColumn: Time.Hour
+

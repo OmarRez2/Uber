@@ -1,0 +1,88 @@
+table 'Dynamic Measures'
+	lineageTag: 9e12515c-073b-40de-9d8e-083cb2cad68b
+
+	/// Dynamic title for the payment type donut chart, driven by the field parameter slicer.
+	measure SlicerHeader =
+			VAR SelectedMetricOrder =
+				SELECTEDVALUE('Dynamic Measures'[Dynamic Measures Order], 0)
+			RETURN
+				SWITCH(
+					SelectedMetricOrder,
+					0, "Total Bookings",
+					1, "Total Booking Value",
+					2, "Total Trip Distance",
+					"Total Bookings"
+				)
+		lineageTag: eae5ea00-ad58-45f0-a422-98f34f18c64f
+
+	/// Dynamic title for the payment type donut chart.
+	measure 'Payment Type Title' = [SlicerHeader] & " by Payment Type"
+		displayFolder: Measures
+		lineageTag: 05a7fb8d-1d67-40f1-8008-37a1d1ba9b94
+
+	/// Dynamic title for the day/night donut chart.
+	measure 'Trip Type Title' = [SlicerHeader] & " by Trip (Day/Night)"
+		displayFolder: Measures
+		lineageTag: f84e9676-c2ba-4f07-a613-d6a8c563b6be
+
+	/// Dynamic title for the pickup-hour trend on the Time Analysis page.
+	measure 'Pickup Time Title' = [SlicerHeader] & " by Pickup Time"
+		displayFolder: Measures
+		lineageTag: 3cbcddec-7e99-4ee1-bdad-15ddf7fd2b6e
+
+	/// Dynamic title for the weekday comparison on the Time Analysis page.
+	measure 'Day Name Title' = [SlicerHeader] & " by Day Name"
+		displayFolder: Measures
+		lineageTag: fc06d1fb-035a-4c94-936c-af179148e39b
+
+	/// Dynamic title for the hour-by-day heatmap on the Time Analysis page.
+	measure 'Hour Day Title' = [SlicerHeader] & " by Hour and Day"
+		displayFolder: Measures
+		lineageTag: fbd36b9d-cb40-43dd-83bd-06969cef4479
+
+	column 'Dynamic Measures'
+		lineageTag: 1b0ce287-9604-4abf-82d1-8dfaf1d00204
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Dynamic Measures Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Dynamic Measures Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dynamic Measures Fields'
+		isHidden
+		lineageTag: ed8e7d40-a9d4-4599-9a40-952fb561ce4d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Dynamic Measures Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dynamic Measures Order'
+		isHidden
+		formatString: 0
+		lineageTag: 3d62c107-6b66-45bf-bb65-6ceac2182a48
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dynamic Measures' = calculated
+		mode: import
+		source =
+				{
+				    ("Total Bookings", NAMEOF('Trip Details'[Total Bookings]), 0),
+				    ("Total Booking Value", NAMEOF('Trip Details'[Total Booking Value]), 1),
+				    ("Total Trip Distance", NAMEOF('Trip Details'[Total Trip Distance]), 2)
+				}
+
+	annotation PBI_Id = dae487f01a1847969cadde3da3f36cb5
+

@@ -1,0 +1,396 @@
+table 'Trip Details'
+	lineageTag: da718a21-5d41-41f6-bf38-16c92fc07042
+
+	/// Distinct number of booked trips in the current filter context.
+	measure 'Total Bookings' = DISTINCTCOUNT('Trip Details'[Trip ID])
+		formatString: #,0.0
+		displayFolder: Measures
+		lineageTag: 670a0bd7-ea2c-4e2f-a512-915b86c456c7
+
+	/// Total booking revenue, defined as fare amount plus surge fee.
+	measure 'Total Booking Value' = SUM('Trip Details'[fare_amount]) + SUM('Trip Details'[Surge Fee])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		displayFolder: Measures
+		lineageTag: 508675f9-3870-4ea6-8afa-f32b221ebf3d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	/// Average booking revenue per distinct trip.
+	measure 'Average Booking Value' = DIVIDE([Total Booking Value], [Total Bookings],BLANK())
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		displayFolder: Measures
+		lineageTag: df501a08-a8c9-463b-a3d7-af84192a6fa6
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	/// Total trip distance in miles in the current filter context.
+	measure 'Total Trip Distance' = SUM('Trip Details'[trip_distance])
+		formatString: #,0.0
+		displayFolder: Measures
+		lineageTag: cd9c4925-5a7a-4a18-82cf-2b5bd9c19c9e
+
+	/// Average trip distance in miles per distinct trip.
+	measure 'Average Trip Distance' = AVERAGE('Trip Details'[trip_distance])
+		formatString: 0.00 "miles"
+		displayFolder: Measures
+		lineageTag: 5ed82a53-d2d1-456c-903a-eed00abad66b
+
+	/// Average elapsed trip duration in minutes.
+	measure 'Average Trip Time' =
+			AVERAGEX(
+			    'Trip Details',
+			    DIVIDE(
+			        DATEDIFF(
+			            'Trip Details'[Pickup Time],
+			            'Trip Details'[Drop Off Time],
+			            SECOND
+			        ),
+			        60.0
+			    )
+			)
+		formatString: 0.00"min"
+		displayFolder: Measures
+		lineageTag: 7e6e5879-afc1-491c-83f7-a90e6a82ffca
+
+	measure 'Tilte For Grid' = ```
+			"Vehicle Type Analysis" 
+			```
+		displayFolder: Measures
+		lineageTag: d1555ed0-1fe7-46e8-a1a0-ec1d32bc4bb0
+
+	measure Measure
+		displayFolder: Measures
+		lineageTag: d35bea03-3a75-4bbd-b422-ecbb3ad61be2
+
+	measure 'Most Frequent Dropoff Point' =
+			
+			VAR DropoffCounts =
+			    FILTER(
+			            ADDCOLUMNS(
+			                        VALUES('Dropoff Locations'[Location]),
+			                                    "Dropoff Count", CALCULATE([Total Bookings])
+			                                            ),
+			                                                    NOT ISBLANK('Dropoff Locations'[Location])
+			                                                                && [Dropoff Count] > 0
+			                                                                    )
+			                                                                    VAR TopDropoffCount =
+			                                                                        MAXX(DropoffCounts, [Dropoff Count])
+			                                                                        VAR TopDropoffLocations =
+			                                                                            FILTER(
+			                                                                                    DropoffCounts,
+			                                                                                            [Dropoff Count] = TopDropoffCount
+			                                                                                                )
+			                                                                                                RETURN
+			                                                                                                    CONCATENATEX(
+			                                                                                                            TopDropoffLocations,
+			                                                                                                                    'Dropoff Locations'[Location],
+			                                                                                                                            ", ",
+			                                                                                                                                    'Dropoff Locations'[Location], ASC
+			                                                                                                                                        )
+		displayFolder: Measures
+		lineageTag: e55affe2-69e9-47d9-9866-2f3fc37a7344
+
+	measure 'Most Frequent Pickup Point' =
+			
+			VAR PickupCounts =
+			    FILTER(
+			            ADDCOLUMNS(
+			                        VALUES('Pickup Locations'[Location]),
+			                                    "Pickup Count", CALCULATE([Total Bookings])
+			                                            ),
+			                                                    NOT ISBLANK('Pickup Locations'[Location])
+			                                                                && [Pickup Count] > 0
+			                                                                    )
+			                                                                    VAR TopPickupCount =
+			                                                                        MAXX(PickupCounts, [Pickup Count])
+			                                                                        VAR TopPickupLocations =
+			                                                                            FILTER(
+			                                                                                    PickupCounts,
+			                                                                                            [Pickup Count] = TopPickupCount
+			                                                                                                )
+			                                                                                                RETURN
+			                                                                                                    CONCATENATEX(
+			                                                                                                            TopPickupLocations,
+			                                                                                                                    'Pickup Locations'[Location],
+			                                                                                                                            ", ",
+			                                                                                                                                    'Pickup Locations'[Location], ASC
+			                                                                                                                                        )
+		displayFolder: Measures
+		lineageTag: d72ca72e-7390-4c6c-ad68-8cc20f89c4ef
+
+	measure 'Farthest Trip' =
+			VAR FarthestTrip =
+			    TOPN(
+			        1,
+			        FILTER(
+			            'Trip Details',
+			            NOT ISBLANK('Trip Details'[trip_distance])
+			                && 'Trip Details'[trip_distance] > 0
+			        ),
+			        'Trip Details'[trip_distance], DESC,
+			        'Trip Details'[Trip ID], ASC
+			    )
+			VAR MaxDistance =
+			    MAXX(FarthestTrip, 'Trip Details'[trip_distance])
+			VAR PickupLocationID =
+			    MAXX(FarthestTrip, 'Trip Details'[PULocationID])
+			VAR DropoffLocationID =
+			    MAXX(FarthestTrip, 'Trip Details'[DOLocationID])
+			VAR PickupLocation =
+			    LOOKUPVALUE(
+			        'Pickup Locations'[Location],
+			        'Pickup Locations'[LocationID], PickupLocationID
+			    )
+			VAR DropoffLocation =
+			    LOOKUPVALUE(
+			        'Dropoff Locations'[Location],
+			        'Dropoff Locations'[LocationID], DropoffLocationID
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(MaxDistance),
+			        BLANK(),
+			        "Pickup: " & COALESCE(PickupLocation, "Unknown")
+			            & " " & UNICHAR(8594) & " Drop-off: " & COALESCE(DropoffLocation, "Unknown")
+			            & " (" & FORMAT(MaxDistance, "0.0") & " miles)"
+			    )
+		displayFolder: Measures
+		lineageTag: 73ab1d1c-6163-4de4-85b3-35a4369c17f3
+
+	/// Returns bookings only for the five highest-volume pickup locations in the current filter context.
+	measure 'Top 5 Pickup Bookings' =
+			VAR PickupLocationRank =
+			    RANKX(
+			        ALLSELECTED('Pickup Locations'[Location]),
+			        [Total Bookings],
+			        ,
+			        DESC,
+			        DENSE
+			    )
+			RETURN
+			    IF(
+			        PickupLocationRank <= 5,
+			        [Total Bookings],
+			        BLANK()
+			    )
+		isHidden
+		displayFolder: Measures
+		lineageTag: 5b2c5dce-6834-473e-8b7c-5d7a2600beb0
+
+	column 'Trip ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ab07489-f95b-4907-8e55-7d8f98497b9d
+		summarizeBy: count
+		sourceColumn: Trip ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 28e34378-a407-4bba-9c45-19c720eb577e
+		summarizeBy: none
+		sourceColumn: Pickup Time
+
+		variation Variation
+			isDefault
+			relationship: 784573a5-8178-427b-b03c-6f93fa232956
+			defaultHierarchy: LocalDateTable_1c32d238-1013-49ee-a7a4-fc864381ccd1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Drop Off Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7a7e5a7d-52d5-4cb8-8b3f-9b3b2e1c4f4a
+		summarizeBy: none
+		sourceColumn: Drop Off Time
+
+		variation Variation
+			isDefault
+			relationship: 90634539-199f-40a4-84fa-d4d8ea9fba48
+			defaultHierarchy: LocalDateTable_ac07e5ff-fa5a-45d2-b6e3-e2c282ef0214.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column passenger_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 0db53011-246e-48a5-ae44-b9092c56c59c
+		summarizeBy: sum
+		sourceColumn: passenger_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_distance
+		dataType: double
+		lineageTag: 957408ed-1661-4737-a4cd-84da2c299a45
+		summarizeBy: sum
+		sourceColumn: trip_distance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PULocationID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8bc5af7d-2df9-4aba-ac02-6b2abb9fbcf4
+		summarizeBy: none
+		sourceColumn: PULocationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOLocationID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9591672d-c991-40be-a7eb-dc42e2c31775
+		summarizeBy: none
+		sourceColumn: DOLocationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column fare_amount
+		dataType: double
+		lineageTag: da73b44b-be93-4d61-b7cd-9135fa5ffd67
+		summarizeBy: sum
+		sourceColumn: fare_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Surge Fee'
+		dataType: double
+		lineageTag: 5c707fcd-693c-4538-89e6-d69621ed4412
+		summarizeBy: sum
+		sourceColumn: Surge Fee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Vehicle
+		dataType: string
+		lineageTag: 7d916765-1bdc-4a2e-af66-a206fa875a56
+		summarizeBy: none
+		sourceColumn: Vehicle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Payment_type
+		dataType: string
+		lineageTag: 8e3d4dc5-435f-45f0-9b10-5995d7331487
+		summarizeBy: none
+		sourceColumn: Payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Date-only key derived from Pickup Time.
+	column 'Pickup Date' = DATE(YEAR('Trip Details'[Pickup Time]), MONTH('Trip Details'[Pickup Time]), DAY('Trip Details'[Pickup Time]))
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 399be18e-1ef8-41c1-b4c2-d990005e81ff
+		summarizeBy: none
+
+	/// Date-only key derived from Drop Off Time.
+	column 'Dropoff Date' = DATE(YEAR('Trip Details'[Drop Off Time]), MONTH('Trip Details'[Drop Off Time]), DAY('Trip Details'[Drop Off Time]))
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: ea7ab10e-bd2d-4712-837f-89ded4369d6c
+		summarizeBy: none
+
+	/// Hour-of-day key derived from Pickup Time.
+	column 'Pickup Hour' = HOUR('Trip Details'[Pickup Time])
+		dataType: int64
+		formatString: 0
+		lineageTag: 054bf26b-b0f9-4630-983e-767c4b48a7f8
+		summarizeBy: none
+
+	/// Hour-of-day key derived from Drop Off Time.
+	column 'Dropoff Hour' = HOUR('Trip Details'[Drop Off Time])
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a6a6e7e-380d-4317-9327-279847c443b3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Trip(Day / Night)' =
+			
+			VAR HourofDay = HOUR('Trip Details'[Pickup Time])
+			RETURN
+			IF(
+			    HourofDay>=17 || HourofDay < 6,
+			    "Night Trip" , "Day Trip"
+			)
+		lineageTag: 32106b86-d555-4c30-aa3c-6a6f86cd4703
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Hour (HH MM SS)' = TIME(HOUR('Trip Details'[Pickup Time]),MINUTE('Trip Details'[Pickup Time]),SECOND('Trip Details'[Pickup Time]))
+		formatString: Long Time
+		lineageTag: 12b4835b-d303-42a5-9602-7eefbd041a4f
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Trip Details","TableItemName":"Pickup Hour (HH MM SS) (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column 'Pickup Hour (HH MM SS) (bins)' =
+			IF(
+				ISBLANK('Trip Details'[Pickup Hour (HH MM SS)]),
+				BLANK(),
+				(INT(('Trip Details'[Pickup Hour (HH MM SS)] * 1440) / 10) * 10) / 1440
+			)
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 900b1e42-9e8b-42f3-9e37-2e4aecb4866b
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Trip Details"
+				          }
+				        },
+				        "Property": "Pickup Hour (HH MM SS)"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 10.0,
+				      "unit": 10
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"t","Entity":"Trip Details"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"Pickup Hour (HH MM SS)"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"Pickup Hour (HH MM SS)"}},"Size":10.0,"TimeUnit":6}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Trip Details' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("E:\BI Projects\Uber\Uber Trip Details.xlsx"), null, true),
+				    #"Trip Details_Sheet" = Source{[Item="Trip Details",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Trip Details_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Trip ID", Int64.Type}, {"Pickup Time", type datetime}, {"Drop Off Time", type datetime}, {"passenger_count", Int64.Type}, {"trip_distance", type number}, {"PULocationID", Int64.Type}, {"DOLocationID", Int64.Type}, {"fare_amount", type number}, {"Surge Fee", type number}, {"Vehicle", type text}, {"Payment_type", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

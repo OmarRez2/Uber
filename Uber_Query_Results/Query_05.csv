@@ -1,0 +1,5 @@
+﻿payment_type,bookings,booking_share_pct,fare_total,surge_total,surge_bookings,surge_rate_pct
+Uber Pay,69530,67.03,893658.95,205377.56,65924,94.81
+Cash,33434,32.23,443357.0,3.8,2,0.01
+Amazon Pay,584,0.56,8556.0,0.0,0,0.0
+Google Pay,180,0.17,2719.5,0.0,0,0.0
